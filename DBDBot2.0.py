@@ -222,10 +222,9 @@ async def 생존자퍽(ctx):
         out = out.replace("'", "", 8)
         await ctx.send(format(id) + "님의 생존자는 " + "**```cs\n" + str(out) +"입니다.\n```**")
         
-        #if os.path.isfile(path) == True:
         if '아이템 = 1' in open(path).read():
 		a = random.randint(1, 16)
-        	offering = '/app/offering/' + str(a) + '.jpg'
+        	offering = "/app/offering/" + str(a) + ".jpg"
         	path = "/app/item/"
         	size = (128, 128)
         	size2 = (64, 64)
