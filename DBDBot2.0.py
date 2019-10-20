@@ -265,7 +265,7 @@ async def 생존자퍽(ctx):
         	bg.save(path+"perk.jpg")
         	result = path+"perk.jpg"
 		a = random.randint(1, 16)
-        	offering = '/app/offering/' + str(a) + '.png'
+        	offering = '/app/offering/' + str(a) + '.jpg'
 		
         	await ctx.send(file=discord.File(result))
 		await ctx.send(file=discord.File(offering))
