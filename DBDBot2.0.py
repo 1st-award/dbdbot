@@ -178,8 +178,6 @@ async def 생존자(ctx):
 @bot.command(pass_context=True)
 async def 리(ctx):
         await ctx.send("==========================================")
-        #await ctx.send(os.path.abspath("killerimg/유연함.png"))
-
 @bot.command(pass_context=True)
 async def 퍽(ctx):
 	try:
@@ -264,11 +262,11 @@ async def 생존자퍽(ctx):
         	bg.paste(img_add_on2, (128, 64))
         	bg.save(path+"perk.jpg")
         	result = path+"perk.jpg"
-		a = random.randint(1, 16)
-        	offering = '/app/offering/' + str(a) + '.jpg'
+		#a = random.randint(1, 16)
+        	#offering = '/app/offering/' + str(a) + '.jpg'
 		
         	await ctx.send(file=discord.File(result))
-		await ctx.send(file=discord.File(offering))
+		#await ctx.send(file=discord.File(offering))
 			       
 @bot.command(pass_context=True)
 async def 아이템(ctx):
