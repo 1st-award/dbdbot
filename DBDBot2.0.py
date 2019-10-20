@@ -223,8 +223,8 @@ async def 생존자퍽(ctx):
         await ctx.send(format(id) + "님의 생존자는 " + "**```cs\n" + str(out) +"입니다.\n```**")
         
         if '아이템 = 1' in open(path).read():
-		a = random.randint(1, 16)
-        	offering = "/app/offering/" + str(a) + ".jpg"
+		#a = random.randint(1, 16)
+        	#offering = "/app/offering/" + str(a) + ".jpg"
         	path = "/app/item/"
         	size = (128, 128)
         	size2 = (64, 64)
@@ -265,7 +265,7 @@ async def 생존자퍽(ctx):
         	result = path+"perk.jpg"
 		
         	await ctx.send(file=discord.File(result))
-		await ctx.send(file=discord.File(offering))
+		#await ctx.send(file=discord.File(offering))
 			       
 @bot.command(pass_context=True)
 async def 아이템(ctx):
