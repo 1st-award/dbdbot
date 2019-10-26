@@ -301,14 +301,14 @@ async def 아이템(ctx):
 async def 오퍼링(ctx):
 	id = (ctx.message.author.mention)
 	msg = ctx.message.content
-        msg = msg.replace(".오퍼링 ", "")
+	msg = msg.replace(".오퍼링 ", "")
 	
 	if msg in ".오퍼링":
 		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 	else:
 		for i in range(0, int(msg)):
 			await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
-
+			
 @bot.command(pass_context=True)
 async def 컨셉퍽(ctx):
 	id = (ctx.message.author.mention)
