@@ -302,7 +302,7 @@ async def 오퍼링(ctx):
 	id = (ctx.message.author.mention)
 	offering = "/app/offering/o" + str(random.randint(1, 16)) + ".jpg"
 	
-	await ctx.sned('format(id) + "님의 오퍼링")
+	await ctx.sned(format(id) + "님의 오퍼링")
 	await ctx.send(file=discord.File(offering))
 	
 @bot.command(pass_context=True)
