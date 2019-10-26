@@ -39,6 +39,7 @@ async def 도움말(ctx):
     embed.add_field(name=".아이템", value="아이템 모드를 ON/OFF합니다. (이벤트 아이템 포함)", inline=False)
     embed.add_field(name=".살인마 퍽", value="살인마 퍽 **4**개를 랜덤으로 출력합니다.", inline=False)
     embed.add_field(name=".생존자 퍽", value="생존자 퍽 **4**개를 랜덤으로 출력합니다.", inline=False)
+    embed.add_field(name=".오퍼링 n(숫자 최대 5개)", value="오퍼링 n개만큼 랜덤으로 출력합니다.", inline=False)
     embed.add_field(name=".컨셉퍽", value="생존자 컨셉퍽을 출력합니다.", inline=False)
     embed.add_field(name=".퍽 이름   (ex: .퍽 유연함)", value="이 퍽에대한 설명을 출력합니다.", inline=False)
     embed.add_field(name=".리", value="게임을 다시하도록 경계선을 그어줍니다.", inline=False)
@@ -263,7 +264,6 @@ async def 생존자퍽(ctx):
         	result = path+"perk.jpg"
 		
         	await ctx.send(file=discord.File(result))
-		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 
 @bot.command(pass_context=True)
 async def 아이템(ctx):
@@ -296,14 +296,19 @@ async def 아이템(ctx):
 		f.close()
 		
 		await ctx.send('아이템 모드가 켜졌습니다.')
-'''		
+		
 @bot.command(pass_context=True)
 async def 오퍼링(ctx):
 	id = (ctx.message.author.mention)
+	null = ""
+	msg = ctx.message.content
+        msg = msg.replace(".오퍼링 ", "")
+	
+	if msg in null:
+		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
+	for i in range(1, msg):
+		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 
-	await ctx.send(format(id) + "님의 오퍼링")
-	await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
-'''
 @bot.command(pass_context=True)
 async def 컨셉퍽(ctx):
 	id = (ctx.message.author.mention)
