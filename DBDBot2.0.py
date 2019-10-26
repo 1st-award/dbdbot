@@ -263,7 +263,8 @@ async def 생존자퍽(ctx):
         	result = path+"perk.jpg"
 		
         	await ctx.send(file=discord.File(result))
-			       
+		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
+
 @bot.command(pass_context=True)
 async def 아이템(ctx):
 	channel = format(ctx.message.guild)
@@ -295,14 +296,14 @@ async def 아이템(ctx):
 		f.close()
 		
 		await ctx.send('아이템 모드가 켜졌습니다.')
-		
+'''		
 @bot.command(pass_context=True)
 async def 오퍼링(ctx):
 	id = (ctx.message.author.mention)
 
 	await ctx.send(format(id) + "님의 오퍼링")
 	await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
-
+'''
 @bot.command(pass_context=True)
 async def 컨셉퍽(ctx):
 	id = (ctx.message.author.mention)
