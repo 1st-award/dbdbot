@@ -305,8 +305,9 @@ async def 오퍼링(ctx):
 	
 	if msg in ".오퍼링":
 		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
-	for i in range(0, int(msg)):
-		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
+	else:
+		for i in range(0, int(msg)):
+			await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 
 @bot.command(pass_context=True)
 async def 컨셉퍽(ctx):
