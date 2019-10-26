@@ -308,6 +308,7 @@ async def 오퍼링(ctx):
 	else:
 		for i in range(0, int(msg)):
 			await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
+			time.sleep(0.5)
 			
 @bot.command(pass_context=True)
 async def 컨셉퍽(ctx):
