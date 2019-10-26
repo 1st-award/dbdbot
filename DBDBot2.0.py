@@ -295,16 +295,14 @@ async def 아이템(ctx):
 		f.close()
 		
 		await ctx.send('아이템 모드가 켜졌습니다.')
-
-'''		
+		
 @bot.command(pass_context=True)
 async def 오퍼링(ctx):
 	id = (ctx.message.author.mention)
-	offering = "/app/offering/o" + str(random.randint(1, 16)) + ".jpg"
-	
-	await ctx.sed(format(id) + "님의 오퍼링")
-	await ctx.send(file=discord.File(offering))
-'''	
+
+	await ctx.send(format(id) + "님의 오퍼링")
+	await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
+
 @bot.command(pass_context=True)
 async def 컨셉퍽(ctx):
 	id = (ctx.message.author.mention)
