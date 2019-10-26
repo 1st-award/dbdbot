@@ -265,7 +265,7 @@ async def 생존자퍽(ctx):
         	result = path+"perk.jpg"
 		
         	await ctx.send(file=discord.File(result))
-		#await ctx.send(file=discord.File(offering))
+		await ctx.send(file=discord.File(offering))
 			       
 @bot.command(pass_context=True)
 async def 아이템(ctx):
