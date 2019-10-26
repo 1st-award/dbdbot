@@ -6,7 +6,6 @@ import perk
 import scperk
 import item
 import shutil
-
 import os
 import os.path
 from discord.ext import commands
