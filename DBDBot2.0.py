@@ -306,7 +306,10 @@ async def 오퍼링(ctx):
 	if msg in ".오퍼링":
 		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 	else:
-		for i in range(0, int(msg)):
+		if msg>6:
+                    await ctx.send('오퍼링은 최대 5개까지 이용가능 합니다.')
+		else:
+			for i in range(0, int(msg)):
 			await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 			
 @bot.command(pass_context=True)
