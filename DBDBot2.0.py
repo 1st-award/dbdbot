@@ -307,7 +307,7 @@ async def 오퍼링(ctx):
 		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 	else:
 		for i in range(0, int(msg)):
-                        await asyncio.sleep(1.0)
+                        #await asyncio.sleep(1.0)
 			await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 			
 @bot.command(pass_context=True)
