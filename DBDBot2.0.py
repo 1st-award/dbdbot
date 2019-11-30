@@ -308,7 +308,7 @@ async def 오퍼링(ctx):
 		await ctx.send(file=discord.File("/app/offering/o" + str(random.randint(1, 16)) + ".jpg"))
 	else:
 		if msg > 5:
-			await ctx.send(foramat(id) + '오퍼링은 최대 5개 까지 가능합니다.')
+			await ctx.send(format(id) + '오퍼링은 최대 5개 까지 가능합니다.')
 		else:
 			for i in range(0, int(msg)):
 				await asyncio.sleep(0.3)
