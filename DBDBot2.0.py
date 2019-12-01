@@ -56,7 +56,7 @@ async def on_ready():
             lastest = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             
         await asyncio.sleep(3600.0)
 
