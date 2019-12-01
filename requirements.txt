@@ -1,4 +1,4 @@
 discord
 Pillow
-beautifulsoup
+beautifulsoup4
 requests
