@@ -31,9 +31,9 @@ async def on_ready():
 	
     lastest = 'Null'
 
-    #ch_name1 = os.environ["ch1"]
+    ch_name1 = os.environ["ch1"]
     #ch_name2 = os.environ["ch2"]
-    channel = bot.get_channel(349182384123674624)
+    channel = bot.get_channel(int(ch_name1))
     #channel1 = bot.get_channel(ch_name2)
 
     while(True):
