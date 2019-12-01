@@ -8,9 +8,8 @@ import scperk
 import item
 import shutil
 import os
-import os.path
-#import requests
-#from bs4 import BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
 from discord.ext import commands
 from PIL import Image
  
