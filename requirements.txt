@@ -1,2 +1,4 @@
 discord
 Pillow
+beautifulsoup
+requests
