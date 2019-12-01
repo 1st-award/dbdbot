@@ -32,7 +32,7 @@ async def on_ready():
     ch_name1 = os.environ["ch1"]
     ch_name2 = os.environ["ch2"]
     channel = bot.get_channel(ch_name1)
-    channel1 = bot get_channel(600661867463180301)
+    channel1 = bot.get_channel(ch_name2)
 
     while(True):
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
