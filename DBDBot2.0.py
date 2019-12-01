@@ -29,10 +29,10 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 	
     lastest = 'Null'
-    ch_name1 = os.environ["ch1"]
-    ch_name2 = os.environ["ch2"]
-    channel = bot.get_channel(ch_name1)
-    channel1 = bot.get_channel(ch_name2)
+    #ch_name1 = os.environ["ch1"]
+    #ch_name2 = os.environ["ch2"]
+    channel = bot.get_channel(349182384123674624)
+    channel1 = bot.get_channel(600661867463180301)
 
     while(True):
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
