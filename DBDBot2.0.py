@@ -28,32 +28,6 @@ async def on_ready():
     print('='*10)
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 	
-    lastest = 'Null'
-    #ch_name1 = os.environ["ch1"]
-    #ch_name2 = os.environ["ch2"]
-    channel = bot.get_channel(349182384123674624)
-    #channel1 = bot.get_channel(600661867463180301)
-
-    while(True):
-        req = requests.get('https://store.steampowered.com/news/?appids=381210')
-        html = req.text
-        soup = BeautifulSoup(html, 'html.parser')
-        table = soup.find(id='news')
-        news = table.find_all('div')
-
-        title = news[1].find(class_='posttitle')
-        url = title.find('a', href = True)
-        url1 = str(url['href'])
-        
-        if lastest in url1:
-            print('Same...')
-        else:
-            lastest = url1
-            await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            #await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            
-        await asyncio.sleep(3600.0)
-
 bot.remove_command('help')
 
 @bot.command(pass_context=True)
