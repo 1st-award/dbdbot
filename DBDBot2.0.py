@@ -32,9 +32,12 @@ async def on_ready():
     lastest = 'Null'
 
     ch_name1 = os.environ["ch1"]
-    #ch_name2 = os.environ["ch2"]
+    ch_name2 = os.environ["ch2"]
+    ch_name3 = os.environ["ch3"]
+	
     channel = bot.get_channel(int(ch_name1))
-    #channel1 = bot.get_channel(ch_name2)
+    channel1 = bot.get_channel(int(ch_name2))
+    channel2 = bot.get_channel(int(ch_name3))
 
     while(True):
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
@@ -52,8 +55,8 @@ async def on_ready():
         else:
             lastest = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            #await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            #await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             
         await asyncio.sleep(3600.0)
 
