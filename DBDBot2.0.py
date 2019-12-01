@@ -7,8 +7,8 @@ import perk
 import scperk
 import item
 import shutil
-import requests
-from bs4 import BeautifulSoup
+import os
+import os.path
 from discord.ext import commands
 from PIL import Image
  
@@ -27,7 +27,7 @@ async def on_ready():
     	shutil.copy('/app/serv/sample.py', path)
     print('='*10)
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
-	
+
 bot.remove_command('help')
 
 @bot.command(pass_context=True)
