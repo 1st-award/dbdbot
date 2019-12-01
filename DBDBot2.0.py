@@ -7,8 +7,8 @@ import perk
 import scperk
 import item
 import shutil
-import requests
-from bs4 import BeautifulSoup
+#import requests
+#from bs4 import BeautifulSoup
 from discord.ext import commands
 from PIL import Image
  
