@@ -61,16 +61,17 @@ async def on_ready():
 		
 	headers = {'Content-Type': 'application/json; charset=utf-8',
     "User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/74.0.3729.169 Chrome/74.0.3729.169 Safari/537.36"}
-	req = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
-	soup = BeautifulSoup(req.text, 'html.parser')
-	main = soup.find(style='overflow:hidden;')
-	perk = main.find_all('p')
-	today_perk = str(perk[1].text)
+	r = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
+  	soup = BeautifulSoup(r.text, 'html.parser')
+    	main = soup.find(style='overflow:hidden;')
+    	perk = main.find_all('p')
+    	today_perk = str(perk[1].text)
+    	day = today_perk[:10]
 	
-	if lastest_perk in today_perk[:10]:
+	if lastest_perk in day:
 		print('Same...')
 	else:
-		lastest_perk = today_perk[:10]
+		lastest_perk = day
 		await channel.send('NEW!! Perk!!\n' + today_perk)
         await asyncio.sleep(3600.0)
 
