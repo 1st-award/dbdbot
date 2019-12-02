@@ -58,7 +58,7 @@ async def on_ready():
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-	
+	'''
 	headers = {'Content-Type': 'application/json; charset=utf-8',
     "User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/74.0.3729.169 Chrome/74.0.3729.169 Safari/537.36"}
 	r = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
@@ -71,10 +71,10 @@ async def on_ready():
 		print('Same..')
 	else:
 		lastest_perk = today_perk[:10]
-		await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            	await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-           	await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            
+		await channel.send('NEW!! Perk!!\n' + str(title.string) + '\n' + url1)
+            	await channel1.send('NEW!! Perk!!\n' + str(title.string) + '\n' + url1)
+           	await channel2.send('NEW!! Perk!!\n' + str(title.string) + '\n' + url1)
+        '''  
         await asyncio.sleep(3600.0)
 
 
