@@ -30,8 +30,7 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 	
     lastest = 'Null'
-    lastest_perk = 'Null'
-	
+
     ch_name1 = os.environ["ch1"]
     ch_name2 = os.environ["ch2"]
     ch_name3 = os.environ["ch3"]
@@ -41,21 +40,6 @@ async def on_ready():
     channel2 = bot.get_channel(int(ch_name3))
 
     while(True):
-	headers = {"User-Agent" : "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko"}
-    	r = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
-	soup = BeautifulSoup(r.text, 'html.parser')
-    	main = soup.find(style='overflow:hidden;')
-    	perk = main.find_all('p')
-    	today_perk = str(perk[1].text)
-    	day = today_perk[:10]
-		   
-    	if lastest_perk in day:
-	    print('Same...')
-	else:
-	    lastest_perk = day
-	    await channel.send('NEW!! Perk!!\n' + today_perk)
-    	    await channel1.send('NEW!! Perk!!\n' + today_perk)
-		   
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
