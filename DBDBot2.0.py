@@ -41,6 +41,20 @@ async def on_ready():
     #channel2 = bot.get_channel(int(ch_name3))
 
     while(True):
+	headers = {"User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/74.0.3729.169 Chrome/74.0.3729.169 Safari/537.36"}
+	r = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
+  	soup = BeautifulSoup(r.text, 'html.parser')
+    	main = soup.find(style='overflow:hidden;')
+    	perk = main.find_all('p')
+    	today_perk = str(perk[1].text)
+    	day = today_perk[:10]
+	
+	if lastest_perk in day:
+		print('Same...')
+	else:
+		lastest_perk = day
+		await channel.send('NEW!! Perk!!\n' + today_perk)
+		
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
