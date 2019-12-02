@@ -41,7 +41,7 @@ async def on_ready():
     channel2 = bot.get_channel(int(ch_name3))
 
     while(True):
-	headers = {"User-Agent" : 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko}
+	headers = {"User-Agent" : "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko"}
     	r = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
 	soup = BeautifulSoup(r.text, 'html.parser')
     	main = soup.find(style='overflow:hidden;')
