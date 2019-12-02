@@ -29,8 +29,9 @@ async def on_ready():
     print('='*10)
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 	
-    lastest = 'Null'
-
+    lastest_update = 'Null'
+    lastest_perk = 'Null'
+	
     ch_name1 = os.environ["ch1"]
     ch_name2 = os.environ["ch2"]
     ch_name3 = os.environ["ch3"]
@@ -50,13 +51,29 @@ async def on_ready():
         url = title.find('a', href = True)
         url1 = str(url['href'])
         
-        if lastest in url1:
+        if lastest_update in url1:
             print('Same...')
         else:
-            lastest = url1
+            lastest_update = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+		
+	headers = {'Content-Type': 'application/json; charset=utf-8',
+    "User-Agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/74.0.3729.169 Chrome/74.0.3729.169 Safari/537.36"}
+	r = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
+	soup = BeautifulSoup(r.text, 'html.parser')
+	main = soup.find(style='overflow:hidden;')
+	perk = main.find_all('p')
+	today_perk = str(perk[1].text)
+	
+	if lastest_perk in today_perk[:10]:
+		print('Same..')
+	else:
+		lastest_perk = today_perk
+		await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            	await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+           	await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             
         await asyncio.sleep(3600.0)
 
