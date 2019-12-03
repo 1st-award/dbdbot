@@ -22,10 +22,12 @@ async def on_ready():
     
     a = bot.guilds
     print('Guild list')
+    
     for i in a:
     	path = '/app/serv/' + format(i) + '.py'
     	print('{}'.format(i))
     	shutil.copy('/app/serv/sample.py', path)
+    	
     print('='*10)
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 	
@@ -73,7 +75,9 @@ async def on_ready():
         else:
             lastest_perk = day
         
-            await channel.send('Perk!! Update!!\n' + link)    
+            await channel.send('Perk!! Update!!\n' + link)
+            await channel1.send('Perk!! Update!!\n' + link)
+            await channel2.send('Perk!! Update!!\n' + link)
         await asyncio.sleep(3600.0)
 
 
@@ -376,4 +380,4 @@ async def 지연시간(ctx):
 	await ctx.send(str(ping) + "ms")
 
 access_token = os.environ["BOT_TOKEN"]
-bot.run(access_token)
+bot.run('NDcyOTgxMTM4NjEzNDY5MTg0.XeY8uQ.SY8hv0mCMiEoIwxdIeJ-gcp_4eA')
