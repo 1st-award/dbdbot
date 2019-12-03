@@ -35,4 +35,5 @@ async def on_ready():
     
         await asyncio.sleep(1.0)
 
-bot.run('NDc2MjIwMzI4MTIxNDY2ODgz.XeI4gA.4HUr2JzUVJo0W6F025sc9r-Uv9I')
+access_token = os.environ["BOT_TOKEN"]
+bot.run(access_token)
