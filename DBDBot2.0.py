@@ -30,7 +30,8 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 	
     lastest = 'Null'
-
+	perktime = 'Null'
+	
     ch_name1 = os.environ["ch1"]
     ch_name2 = os.environ["ch2"]
     #ch_name3 = os.environ["ch3"]
@@ -40,6 +41,23 @@ async def on_ready():
     #channel2 = bot.get_channel(int(ch_name3))
 
     while(True):
+		r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
+
+        soup = BeautifulSoup(r.text, 'html.parser')
+        main = soup.find(class_="article-board m-tcol-c")
+        perk = main.find_all('td')
+        day = str(perk[0].get_text())
+        
+        link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
+    
+        if perktime in day:
+            print('same...')
+
+        else:
+            perktime = day
+        
+            await channel.send('Perk!! Update!!\n' + link)
+		
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
