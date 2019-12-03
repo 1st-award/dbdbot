@@ -34,32 +34,14 @@ async def on_ready():
 
     ch_name1 = os.environ["ch1"]
     ch_name2 = os.environ["ch2"]
-    ch_name3 = os.environ["ch3"]
+    #ch_name3 = os.environ["ch3"]
 	
     channel = bot.get_channel(int(ch_name1))
     channel1 = bot.get_channel(int(ch_name2))
-    channel2 = bot.get_channel(int(ch_name3))
+    #channel2 = bot.get_channel(int(ch_name3))
 
     while(True):
-        req = requests.get('https://store.steampowered.com/news/?appids=381210')
-        html = req.text
-        soup = BeautifulSoup(html, 'html.parser')
-        table = soup.find(id='news')
-        news = table.find_all('div')
-
-        title = news[1].find(class_='posttitle')
-        url = title.find('a', href = True)
-        url1 = str(url['href'])
-        
-        if lastest in url1:
-            print('Same...')
-        else:
-            lastest = url1
-            await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            
-        r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
+	r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
         soup = BeautifulSoup(r.text, 'html.parser')
         main = soup.find(class_="article-board m-tcol-c")
         perk = main.find_all('td')
@@ -77,7 +59,25 @@ async def on_ready():
         
             await channel.send('Perk!! Update!!\n' + link)
             await channel1.send('Perk!! Update!!\n' + link)
-            await channel2.send('Perk!! Update!!\n'  +link)
+            #await channel2.send('Perk!! Update!!\n'  +link)
+		
+        req = requests.get('https://store.steampowered.com/news/?appids=381210')
+        html = req.text
+        soup = BeautifulSoup(html, 'html.parser')
+        table = soup.find(id='news')
+        news = table.find_all('div')
+
+        title = news[1].find(class_='posttitle')
+        url = title.find('a', href = True)
+        url1 = str(url['href'])
+        
+        if lastest in url1:
+            print('Same...')
+        else:
+            lastest = url1
+            await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            #await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             
         await asyncio.sleep(3600.0)
 
