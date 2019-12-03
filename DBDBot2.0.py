@@ -3,6 +3,7 @@ import asyncio
 from bs4 import BeautifulSoup
 import requests
 import time
+import os
 from discord.ext import commands
 
 
@@ -34,4 +35,5 @@ async def on_ready():
 
            await asyncio.sleep(1.0)
 
-bot.run('NDc2MjIwMzI4MTIxNDY2ODgz.XeYxbg.1oAjvgROauyiGFK0HLtDRbWOY9E')
+access_token = os.environ["BOT_TOKEN"]
+bot.run(access_token)
