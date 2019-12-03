@@ -40,24 +40,7 @@ async def on_ready():
     channel1 = bot.get_channel(int(ch_name2))
     #channel2 = bot.get_channel(int(ch_name3))
 
-    while(True):
-	r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
-
-        soup = BeautifulSoup(r.text, 'html.parser')
-        main = soup.find(class_="article-board m-tcol-c")
-        perk = main.find_all('td')
-        day = str(perk[0].get_text())
-        
-        link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
-    
-        if perktime in day:
-            print('same...')
-
-        else:
-            perktime = day
-        
-            await channel.send('Perk!! Update!!\n' + link)
-		
+    while(True):	
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
