@@ -30,6 +30,7 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 	
     lastest = 'Null'
+    lastest_Perk = 'Null'
 
     ch_name1 = os.environ["ch1"]
     ch_name2 = os.environ["ch2"]
