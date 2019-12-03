@@ -18,21 +18,20 @@ async def on_ready():
     lastest_perk = 'Null'
     while(True):
     
-        headers = {"User-Agent" : 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'}
-        r = requests.get('https://gall.dcinside.com/mgallery/board/view/?id=dbd&no=546029&page=1', headers = headers)
+           r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
+           soup = BeautifulSoup(r.text, 'html.parser')
+           main = soup.find(class_="article-board m-tcol-c")
+           perk = main.find_all('td')
+           today_perk = str(perk[1].text)
+           day = str(perk[0].get_text())
+           link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
 
-        soup = BeautifulSoup(r.text, 'html.parser')
-        main = soup.find(style='overflow:hidden;')
-        perk = main.find_all('p')
-        today_perk = str(perk[1].text)
-        day = today_perk[:10]
-    
-        if lastest_perk in day:
-        	await channel.send('Same...')
-        else:
-        	lastest_perk = day
-        	await channel.send('NEW!! Perk!!\n' + today_perk)
-    
-        await asyncio.sleep(1.0)
+           if lastest_perk in day:
+               await channel.send('Same...')
+           else:
+                lastest_perk = day
+                await channel.send('NEW!! Perk!!\n' + link)
 
-bot.run('NDc2MjIwMzI4MTIxNDY2ODgz.XeI4gA.4HUr2JzUVJo0W6F025sc9r-Uv9I')
+           await asyncio.sleep(1.0)
+
+bot.run('NDc2MjIwMzI4MTIxNDY2ODgz.XeYxbg.1oAjvgROauyiGFK0HLtDRbWOY9E')
