@@ -35,11 +35,11 @@ async def on_ready():
     lastest_perk = 'Null'
     ch_name1 = os.environ["ch1"]
     ch_name2 = os.environ["ch2"]
-    #ch_name3 = os.environ["ch3"]
+    ch_name3 = os.environ["ch3"]
 	
     channel = bot.get_channel(int(ch_name1))
     channel1 = bot.get_channel(int(ch_name2))
-    #channel2 = bot.get_channel(int(ch_name3))
+    channel2 = bot.get_channel(int(ch_name3))
 
     while(True):
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
@@ -58,7 +58,7 @@ async def on_ready():
             lastest = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            #await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             
         r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
 
@@ -77,7 +77,7 @@ async def on_ready():
         
             await channel.send('Perk!! Update!!\n' + link)
             await channel1.send('Perk!! Update!!\n' + link)
-            #await channel2.send('Perk!! Update!!\n' + link)
+            await channel2.send('Perk!! Update!!\n' + link)
         await asyncio.sleep(3600.0)
 
 
