@@ -33,7 +33,7 @@ async def on_ready():
                 lastest_perk = day
                 await channel.send('NEW!! Perk!!\n' + link)
 
-           await asyncio.sleep(1.0)
+           await asyncio.sleep(30000)
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
