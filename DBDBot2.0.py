@@ -61,7 +61,7 @@ async def on_ready():
             await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             #await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
 		
-		r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
+	r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
         soup = BeautifulSoup(r.text, 'html.parser')
         main = soup.find(class_="article-board m-tcol-c")
         perk = main.find_all('td')
