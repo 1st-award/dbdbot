@@ -77,7 +77,7 @@ async def on_ready():
         
             await channel.send('Perk!! Update!!\n' + link)
             await channel1.send('Perk!! Update!!\n' + link)
-            await channel2.send('Perk!! Update!!\n' + link)
+            #await channel2.send('Perk!! Update!!\n' + link)
         await asyncio.sleep(3600.0)
 
 
@@ -380,4 +380,4 @@ async def 지연시간(ctx):
 	await ctx.send(str(ping) + "ms")
 
 access_token = os.environ["BOT_TOKEN"]
-bot.run('NDcyOTgxMTM4NjEzNDY5MTg0.XeY8uQ.SY8hv0mCMiEoIwxdIeJ-gcp_4eA')
+bot.run(access_token)
