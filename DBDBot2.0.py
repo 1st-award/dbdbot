@@ -52,9 +52,7 @@ async def on_ready():
         url = title.find('a', href = True)
         url1 = str(url['href'])
         
-        if lastest in url1:
-            print('Same...')
-        else:
+        if lastest not url1:
             lastest = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
@@ -69,10 +67,7 @@ async def on_ready():
         
         link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
     
-        if lastest_perk in day:
-            print('same...')
-
-        else:
+        if lastest_perk not day:
             lastest_perk = day
         
             await channel.send('Perk!! Update!!\n' + link)
