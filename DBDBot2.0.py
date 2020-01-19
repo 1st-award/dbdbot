@@ -64,8 +64,7 @@ async def on_ready():  # 디스코드 봇 로그인
             # await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
 
         # 퍽 업데이트 크롤링
-        r = requests.get(
-            'https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
+        r = requests.get('https://cafe.naver.com/ArticleList.nhn?search.clubid=28631521&search.menuid=93&search.boardtype=L')
 
         soup = BeautifulSoup(r.text, 'html.parser')
         main = soup.find(class_="article-board m-tcol-c")
