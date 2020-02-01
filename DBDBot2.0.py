@@ -31,9 +31,12 @@ async def on_ready():  # 디스코드 봇 로그인
 
     print('=' * 10)  # 상태 메세지 생성
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
-    # 크롤링에 필요한 것들
-    lastest = 'Null'
-    lastest_perk = 'Null'
+    
+    #update.txt에서 정보 가져오기
+    f = open("update.txt", "r")
+    read = f.read()
+    lastest = read.split()
+    f.close()
     
     # Heroku에 서버 저장
     ch_name1 = os.environ["ch1"]
@@ -57,8 +60,8 @@ async def on_ready():  # 디스코드 봇 로그인
         url = title.find('a', href=True)
         url1 = str(url['href'])
 
-        if lastest not in url1:
-            lastest = url1
+        if lastest[0] not in url1:
+            lastest[0] = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
@@ -73,12 +76,21 @@ async def on_ready():  # 디스코드 봇 로그인
 
         link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
 
-        if lastest_perk not in day:
-            lastest_perk = day
+        if lastest[1] not in day:
+            lastest[1] = day
 
             await channel.send('Perk!! Update!!\n' + link)
             # await channel1.send('Perk!! Update!!\n' + link)
             # await channel2.send('Perk!! Update!!\n' + link)
+           
+        # 크롤링한 정보를 update.txt에 가져다 놓기
+        f = open("update.txt", "w")
+        f.write(lastest[0])
+        f.write('\n')
+        f.write(lastest[1])
+        f.close()
+        
+        # 업데이트 갱신을 1시간 주기로 
         await asyncio.sleep(3600.0)
 
 
