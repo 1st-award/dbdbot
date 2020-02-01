@@ -63,6 +63,7 @@ async def on_ready():  # 디스코드 봇 로그인
         if lastest[0] not in url1:
             lastest[0] = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            await channel.send(lastest)
             # await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
 
