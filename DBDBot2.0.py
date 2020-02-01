@@ -49,6 +49,7 @@ async def on_ready():  # 디스코드 봇 로그인
     # channel2 = bot.get_channel(int(ch_name3))
 
     while True:
+        await channel.send(lastest)
         # 업데이트 뉴스 크롤링
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
         html = req.text
@@ -63,7 +64,6 @@ async def on_ready():  # 디스코드 봇 로그인
         if lastest[0] not in url1:
             lastest[0] = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            await channel.send(lastest)
             # await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
 
@@ -90,7 +90,7 @@ async def on_ready():  # 디스코드 봇 로그인
         f.write('\n')
         f.write(lastest[1])
         f.close()
-        
+        await channel.send(lastest)
         # 업데이트 갱신을 1시간 주기로 
         await asyncio.sleep(3600.0)
 
