@@ -33,7 +33,7 @@ async def on_ready():  # 디스코드 봇 로그인
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
     
     #update.txt에서 정보 가져오기
-    f = open("update.txt", "r")
+    f = open("/app/update.txt", "r")
     read = f.read()
     lastest = read.split()
     f.close()
@@ -85,7 +85,7 @@ async def on_ready():  # 디스코드 봇 로그인
             # await channel2.send('Perk!! Update!!\n' + link)
            
         # 크롤링한 정보를 update.txt에 가져다 놓기
-        f = open("update.txt", "w")
+        f = open("/app/update.txt", "w")
         f.write(lastest[0])
         f.write('\n')
         f.write(lastest[1])
