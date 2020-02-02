@@ -90,7 +90,7 @@ async def on_ready():  # 디스코드 봇 로그인
         f.write('\n')
         f.write(lastest[1])
         f.close()
-        await channel.send(lastest)
+        await channel.send(lastest + '\n' + url1 + '\n' + day)
         # 업데이트 갱신을 1시간 주기로 
         await asyncio.sleep(3600.0)
 
