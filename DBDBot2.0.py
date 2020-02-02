@@ -35,7 +35,7 @@ async def on_ready():  # 디스코드 봇 로그인
     #update.txt에서 정보 가져오기
     f = open("update.txt", "r")
     read = f.read()
-    lastest = read.split()
+    lastest = read.split(' ')
     f.close()
     
     # Heroku에 서버 저장
@@ -87,7 +87,7 @@ async def on_ready():  # 디스코드 봇 로그인
         # 크롤링한 정보를 update.txt에 가져다 놓기
         f = open("update.txt", "w")
         f.write(lastest[0])
-        f.write('\n')
+        f.write(' ')
         f.write(lastest[1])
         f.close()
         await channel.send(url1 + day)
