@@ -86,9 +86,8 @@ async def on_ready():  # 디스코드 봇 로그인
            
         # 크롤링한 정보를 update.txt에 가져다 놓기
         f = open("update.txt", "w")
-        f.write(lastest[0])
-        f.write(' ', end='')
-        f.write(lastest[1])
+        msg = lastest[0] + ' ' + lastest[1]
+        f.write(msg)
         f.close()
         await channel.send(url1 + day)
         await channel.send(lastest[0] + lastest[1])
