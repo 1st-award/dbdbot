@@ -31,18 +31,9 @@ async def on_ready():  # 디스코드 봇 로그인
 
     print('=' * 10)  # 상태 메세지 생성
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
-    
-    #크롤링 저장
-    lastest_news = 'null'
-    lastest_perk = 'null'
-    
-    #update.txt에서 정보 가져오기
-    '''
-    f = open("update.txt", "r")
-    read = f.read()
-    lastest = read.split(' ')
-    f.close()
-    '''
+    # 크롤링에 필요한 것들
+    lastest = 'Null'
+    lastest_perk = 'Null'
     
     # Heroku에 서버 저장
     ch_name1 = os.environ["ch1"]
@@ -55,7 +46,6 @@ async def on_ready():  # 디스코드 봇 로그인
     # channel2 = bot.get_channel(int(ch_name3))
 
     while True:
-        await channel.send(lastest)
         # 업데이트 뉴스 크롤링
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
         html = req.text
@@ -67,8 +57,8 @@ async def on_ready():  # 디스코드 봇 로그인
         url = title.find('a', href=True)
         url1 = str(url['href'])
 
-        if lastest_news not in url1:
-            lastest_news = url1
+        if lastest not in url1:
+            lastest = url1
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
@@ -83,23 +73,13 @@ async def on_ready():  # 디스코드 봇 로그인
 
         link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
 
-        if lastest_perk not in day[1:]:
-            lastest_perk = day[1:]
+        if lastest_perk not in day:
+            lastest_perk = day
 
             await channel.send('Perk!! Update!!\n' + link)
             # await channel1.send('Perk!! Update!!\n' + link)
             # await channel2.send('Perk!! Update!!\n' + link)
-        
-        # 크롤링한 정보를 update.txt에 가져다 놓기
-        '''
-        f = open("update.txt", "w")
-        msg = lastest[0] + ' ' + lastest[1]
-        f.write(msg)
-        f.close()
-        await channel.send(url1 + day)
-        await channel.send(lastest[0] + lastest[1])
-        '''
-        # 업데이트 갱신을 3시간 주기로 
+        # 업데이트 주기 3
         await asyncio.sleep(10800.0)
 
 
