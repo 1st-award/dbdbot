@@ -77,8 +77,8 @@ async def on_ready():  # 디스코드 봇 로그인
 
         link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
 
-        if lastest[1] not in day:
-            lastest[1] = day
+        if lastest[1] not in day[1:]:
+            lastest[1] = day[1:]
 
             await channel.send('Perk!! Update!!\n' + link)
             # await channel1.send('Perk!! Update!!\n' + link)
@@ -87,7 +87,7 @@ async def on_ready():  # 디스코드 봇 로그인
         # 크롤링한 정보를 update.txt에 가져다 놓기
         f = open("update.txt", "w")
         f.write(lastest[0])
-        f.write(' ')
+        f.write(' ', end='')
         f.write(lastest[1])
         f.close()
         await channel.send(url1 + day)
