@@ -83,7 +83,7 @@ async def on_ready():  # 디스코드 봇 로그인
             await channel.send('Perk!! Update!!\n' + link)
             # await channel1.send('Perk!! Update!!\n' + link)
             # await channel2.send('Perk!! Update!!\n' + link)
-           
+        '''
         # 크롤링한 정보를 update.txt에 가져다 놓기
         f = open("update.txt", "w")
         msg = lastest[0] + ' ' + lastest[1]
@@ -91,8 +91,9 @@ async def on_ready():  # 디스코드 봇 로그인
         f.close()
         await channel.send(url1 + day)
         await channel.send(lastest[0] + lastest[1])
-        # 업데이트 갱신을 1시간 주기로 
-        await asyncio.sleep(3600.0)
+        '''
+        # 업데이트 갱신을 3시간 주기로 
+        await asyncio.sleep(10800.0)
 
 
 # .도움말을 위한 기존에 있는 help 제거
