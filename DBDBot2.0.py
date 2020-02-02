@@ -337,17 +337,17 @@ async def 아이템(ctx):  # 아이템 ON/OFF 기능
     channel = format(ctx.message.guild.id)
     path = '/app/serv/' + channel + '.py'
     output = []
-    if '아이템 = 1' in open(path).read():
+    if '아이템 = 1' in open(path).read(): #만약 아이템이 1(ON)일 때
         f = open(path)
 
         for line in f:
-            if not '아이템 = 1' in line:
+            if not '아이템 = 1' in line: #아이템 = 1을 제외하고 나머지 글 라인들은 output에 저장
                 output.append(line)
         f.close()
-        f = open(path, 'w')
-        f.writelines(output)
-        f.write('아이템 = 0')
-        f.close()
+        f = open(path, 'w') #file을 쓰기로 다시 열고
+        f.writelines(output) #output에 저장했던 나머지 글 라인들을 다시 적어 넣는다.
+        f.write('아이템 = 0') #아이템 = 0을 마지막으로 집어 넣고
+        f.close()            # 파일을 닫는다.
 
         await ctx.send('아이템 모드가 꺼졌습니다.')
     elif '아이템 = 0' in open(path).read():
