@@ -43,12 +43,12 @@ async def on_ready():  # 디스코드 봇 로그인
 
     # Heroku에 서버 저장
     ch_name1 = os.environ["ch1"]
-    # ch_name2 = os.environ["ch2"]
+    ch_name2 = os.environ["ch2"]
     # ch_name3 = os.environ["ch3"]
 
     # 체널 정보 가져오기
     channel = bot.get_channel(int(ch_name1))
-    # channel1 = bot.get_channel(int(ch_name2))
+    channel1 = bot.get_channel(int(ch_name2))
     # channel2 = bot.get_channel(int(ch_name3))
 
     while True:
@@ -79,7 +79,7 @@ async def on_ready():  # 디스코드 봇 로그인
             f.write(msg)  # msg를 마지막에 집어 넣고
             f.close()  # 파일을 닫는다.
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
-            # await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
+            await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
 
         # 퍽 업데이트 크롤링
@@ -108,7 +108,7 @@ async def on_ready():  # 디스코드 봇 로그인
             f.close()  # 파일을 닫는다.
 
             await channel.send('Perk!! Update!!\n' + link)
-            # await channel1.send('Perk!! Update!!\n' + link)
+            await channel1.send('Perk!! Update!!\n' + link)
             # await channel2.send('Perk!! Update!!\n' + link)
         # 업데이트 확인 주기 3시간
         await asyncio.sleep(10800.0)
