@@ -1,14 +1,15 @@
-import discord
 import asyncio
-import random
-import string
 import character
-import perk
-import scperk
+import discord
 import item
-import shutil
 import os
+import perk
+import random
 import requests
+import scperk
+import shutil
+import string
+import update
 from bs4 import BeautifulSoup
 from discord.ext import commands
 from PIL import Image
@@ -31,10 +32,15 @@ async def on_ready():  # 디스코드 봇 로그인
 
     print('=' * 10)  # 상태 메세지 생성
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
-    # 크롤링에 필요한 것들
-    lastest = 'Null'
-    lastest_perk = 'Null'
-    
+
+    # update.txt.에서 값을 가져온다.
+    lastest_news = update.news
+    lastest_perk = update.perk
+
+    # update.txt에서 값 가져올 때 필요한 것들
+    path = '/app/update' + '.py'
+    output = []
+
     # Heroku에 서버 저장
     ch_name1 = os.environ["ch1"]
     # ch_name2 = os.environ["ch2"]
@@ -56,9 +62,22 @@ async def on_ready():  # 디스코드 봇 로그인
         title = news[1].find(class_='posttitle')
         url = title.find('a', href=True)
         url1 = str(url['href'])
+        url2 = url1[-19:]    # post 번호만 가져온다.
 
-        if lastest not in url1:
-            lastest = url1
+        if str(lastest_news) not in url2:    # lastest_news와 url2이 다르면
+            msg = '\nnews = ' + url2  # 수정할 내용을 입력
+
+            # update.txt에서 값 가져오기
+            f = open(path)
+            for line in f:
+                if not str(lastest_news) in line:  # lastest_news를 제외하고 나머지 글 라인들은 output에 저장
+                    output.append(line)
+            f.close()
+            print(output)
+            f = open(path, 'w')  # file을 쓰기로 다시 열고
+            f.writelines(output)  # output에 저장했던 나머지 글 라인들을 다시 적어 넣는다.
+            f.write(msg)  # msg를 마지막에 집어 넣고
+            f.close()  # 파일을 닫는다.
             await channel.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel1.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
             # await channel2.send('NEW!! Update!!\n' + str(title.string) + '\n' + url1)
@@ -73,13 +92,25 @@ async def on_ready():  # 디스코드 봇 로그인
 
         link = 'https://cafe.naver.com/deadbydaylight/' + day[1:]
 
-        if lastest_perk not in day:
-            lastest_perk = day
+        if str(lastest_perk) not in day:
+            msg = '\nperk = ' + day
+
+            # update.txt에서 값 가져오기
+            f = open(path)
+            for line in f:
+                if not str(lastest_perk) in line:  # lastest_perk를 제외하고 나머지 글 라인들은 output에 저장
+                    output.append(line)
+            f.close()
+            print(output)
+            f = open(path, 'w')  # file을 쓰기로 다시 열고
+            f.writelines(output)  # output에 저장했던 나머지 글 라인들을 다시 적어 넣는다.
+            f.write(msg)  # msg를 마지막에 집어 넣고
+            f.close()  # 파일을 닫는다.
 
             await channel.send('Perk!! Update!!\n' + link)
             # await channel1.send('Perk!! Update!!\n' + link)
             # await channel2.send('Perk!! Update!!\n' + link)
-        # 업데이트 주기 3
+        # 업데이트 확인 주기 3시간
         await asyncio.sleep(10800.0)
 
 
@@ -193,6 +224,9 @@ async def 살인마(ctx):
                     a2 = random.sample(range(1, 20), 2)
                 elif i in '데모고르곤':
                     kpath = kpath + '데모고르곤/de'
+                    a2 = random.sample(range(1, 20), 2)
+                elif i in '악귀':
+                    kpath = kpath + '악귀/oni'
                     a2 = random.sample(range(1, 20), 2)
                 # bg.jpg 열어서 편집 저장
                 bg = Image.open('kadon/bg.jpg')
@@ -337,16 +371,16 @@ async def 아이템(ctx):  # 아이템 ON/OFF 기능
     channel = format(ctx.message.guild.id)
     path = '/app/serv/' + channel + '.py'
     output = []
-    if '아이템 = 1' in open(path).read(): #만약 아이템이 1(ON)일 때
+    if '아이템 = 1' in open(path).read(): # 만약 아이템이 1(ON)일 때
         f = open(path)
 
         for line in f:
-            if not '아이템 = 1' in line: #아이템 = 1을 제외하고 나머지 글 라인들은 output에 저장
+            if not '아이템 = 1' in line: # 아이템 = 1을 제외하고 나머지 글 라인들은 output에 저장
                 output.append(line)
         f.close()
-        f = open(path, 'w') #file을 쓰기로 다시 열고
-        f.writelines(output) #output에 저장했던 나머지 글 라인들을 다시 적어 넣는다.
-        f.write('아이템 = 0') #아이템 = 0을 마지막으로 집어 넣고
+        f = open(path, 'w') # file을 쓰기로 다시 열고
+        f.writelines(output) # output에 저장했던 나머지 글 라인들을 다시 적어 넣는다.
+        f.write('아이템 = 0') # 아이템 = 0을 마지막으로 집어 넣고
         f.close()            # 파일을 닫는다.
 
         await ctx.send('아이템 모드가 꺼졌습니다.')
@@ -372,7 +406,7 @@ async def 오퍼링(ctx):  # 오퍼링을 랜덤 최대 5개를 출력
     msg = msg.replace(".오퍼링 ", "")
 
     if msg in ".오퍼링":
-        await ctx.send(file=discord.File("offering/o" + str(random.randint(1, 16)) + ".jpg"))
+        await ctx.send(file=discord.File("offering/o" + str(random.randint(1, 17)) + ".jpg"))
     else:
         if int(msg) > 5:
             await ctx.send(format(id) + '오퍼링은 최대 5개 까지 가능합니다.')
