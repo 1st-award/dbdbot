@@ -413,7 +413,7 @@ async def 오퍼링(ctx):  # 오퍼링을 랜덤 최대 5개를 출력
         else:
             for i in range(0, int(msg)):
                 await asyncio.sleep(0.3)
-                await ctx.send(file=discord.File("offering/o" + str(random.randint(1, 16)) + ".jpg"))
+                await ctx.send(file=discord.File("offering/o" + str(random.randint(1, 17)) + ".jpg"))
 
 
 @bot.command(pass_context=True)
