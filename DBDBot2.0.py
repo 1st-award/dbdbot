@@ -33,10 +33,6 @@ async def on_ready():  # 디스코드 봇 로그인
     print('=' * 10)  # 상태 메세지 생성
     await bot.change_presence(activity=discord.Game(name=".도움말   :D", type=0))
 
-    # update.txt.에서 값을 가져온다.
-    lastest_news = update.news
-    lastest_perk = update.perk
-
     # update.txt에서 값 가져올 때 필요한 것들
     path = '/app/update' + '.py'
     output = []
@@ -52,6 +48,10 @@ async def on_ready():  # 디스코드 봇 로그인
     # channel2 = bot.get_channel(int(ch_name3))
 
     while True:
+        # update.txt.에서 값을 가져온다.
+        lastest_news = update.news
+        lastest_perk = update.perk
+
         # 업데이트 뉴스 크롤링
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
         html = req.text
