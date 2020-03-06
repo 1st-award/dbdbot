@@ -51,6 +51,7 @@ async def on_ready():  # 디스코드 봇 로그인
         # update.txt.에서 값을 가져온다.
         lastest_news = update.news
         lastest_perk = update.perk
+        await channel.send(lastest_news+lastest_perk)
 
         # 업데이트 뉴스 크롤링
         req = requests.get('https://store.steampowered.com/news/?appids=381210')
